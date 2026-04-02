@@ -1,0 +1,369 @@
+﻿<!DOCTYPE html>
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Developer Command Center | Vaibhav Kumar Rai</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        amber: {
+                            500: '#FFBF00',
+                            600: '#D49F00',
+                            900: '#6B4600',
+                            950: '#3D2800',
+                        },
+                        charcoal: {
+                            800: '#2E2E2E',
+                            900: '#1A1A1A',
+                            950: '#121212',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --command-bg: #121212;
+            --panel-bg: #1A1A1A;
+            --accent: #FFBF00;
+            --accent-muted: #6B4600;
+            --border: #2E2E2E;
+        }
+        body {
+            background-color: var(--command-bg);
+            color: #d1d5db;
+        }
+        .panel-border {
+            border: 1px solid var(--border);
+        }
+        .code-text {
+            font-family: 'Space Mono', monospace;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+        @media (max-width: 1024px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            background-color: var(--accent);
+            box-shadow: 0 0 8px var(--accent);
+        }
+        .terminal-header {
+            background: var(--border);
+            border-radius: 8px 8px 0 0;
+            padding: 8px 12px;
+            display: flex;
+            gap: 6px;
+        }
+        .terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link.active {
+            background-color: rgba(26, 26, 26, 0.85);
+            border-color: rgba(255, 191, 0, 0.45);
+            color: #FFBF00;
+            transform: translateX(6px);
+            box-shadow: 0 0 15px rgba(255, 191, 0, 0.2);
+        }
+        .nav-link.active .material-symbols-outlined,
+        .nav-link.active .code-text {
+            color: #FFBF00;
+        }
+    </style>
+</head>
+<body class="font-sans selection:bg-amber-500/30">
+<div class="dashboard-grid">
+<aside class="bg-charcoal-950 border-r border-charcoal-800 flex flex-col p-6 sticky top-0 h-screen hidden lg:flex">
+<div class="mb-10">
+<h1 class="text-xl font-bold text-white tracking-tighter uppercase">Vaibhav Kumar Rai</h1>
+<p class="text-xs text-charcoal-400 code-text mt-1">Full_Stack_Dev_v3.0</p>
+</div>
+<nav class="flex-grow space-y-2">
+<a class="nav-link flex items-center gap-3 px-4 py-3 rounded border border-transparent text-charcoal-400 hover:bg-charcoal-900 hover:text-white" href="#home">
+<span class="material-symbols-outlined text-sm">terminal</span>
+<span class="text-sm code-text">ROOT_DIR</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-3 rounded border border-transparent hover:bg-charcoal-900 text-charcoal-400 hover:text-white" href="#skills">
+<span class="material-symbols-outlined text-sm">analytics</span>
+<span class="text-sm code-text">SKILLS_MATRIX</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-3 rounded border border-transparent hover:bg-charcoal-900 text-charcoal-400 hover:text-white" href="#experience">
+<span class="material-symbols-outlined text-sm">history</span>
+<span class="text-sm code-text">WORK & EXPERIENCE</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-3 rounded border border-transparent hover:bg-charcoal-900 text-charcoal-400 hover:text-white" href="#projects">
+<span class="material-symbols-outlined text-sm">account_tree</span>
+<span class="text-sm code-text">REPOSITORIES</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-3 rounded border border-transparent hover:bg-charcoal-900 text-charcoal-400 hover:text-white" href="#certifications">
+<span class="material-symbols-outlined text-sm">workspace_premium</span>
+<span class="text-sm code-text">CERTIFICATIONS</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-3 rounded border border-transparent hover:bg-charcoal-900 text-charcoal-400 hover:text-white" href="#contact">
+<span class="material-symbols-outlined text-sm">send</span>
+<span class="text-sm code-text">GET_IN_TOUCH</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-charcoal-800">
+<div class="flex items-center gap-2 mb-6">
+<span class="status-dot"></span>
+<span class="text-[10px] code-text text-amber-500">SYSTEMS_OPTIMAL</span>
+</div>
+<div class="space-y-5">
+<div>
+<p class="text-[10px] code-text text-charcoal-500 mb-2 tracking-widest uppercase">COMMS_LINK</p>
+<div class="flex gap-4">
+<a href="https://github.com/vaibhavkumarrai000" target="_blank" rel="noopener noreferrer" title="GitHub"><svg class="w-5 h-5 text-charcoal-400 hover:text-amber-500 hover:scale-110 transition-all" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.931 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.372.79 1.102.79 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg></a>
+<a href="https://www.linkedin.com/in/vaibhavkumarrai000/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><svg class="w-5 h-5 text-charcoal-400 hover:text-amber-500 hover:scale-110 transition-all" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg></a>
+
+ </div>
+ </div>
+ </div>
+</div>
+</aside>
+<main class="overflow-y-auto overflow-x-hidden p-4 lg:p-8 space-y-8 bg-charcoal-900">
+<div class="lg:hidden flex justify-between items-center mb-6">
+<h1 class="text-lg font-bold text-white uppercase code-text">VK_SYSTEM</h1>
+<button class="text-amber-500"><span class="material-symbols-outlined">menu</span></button>
+</div>
+<section class="grid lg:grid-cols-12 gap-6" id="home">
+<div class="lg:col-span-8 bg-charcoal-950 p-6 rounded-lg panel-border relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-8xl text-amber-500">precision_manufacturing</span>
+</div>
+<div class="text-amber-500 text-xs code-text mb-4">> INITIALIZING_BIOGRAPHY...</div>
+<h2 class="text-3xl md:text-5xl font-bold text-white mb-4 uppercase leading-tight">
+                    Vaibhav Kumar Rai <br/>
+<span class="text-amber-500">Full Stack Developer & Algorithmic Problem Solver</span>
+</h2>
+<div class="space-y-3 mb-8 max-w-2xl">
+<p class="text-charcoal-400 leading-relaxed italic border-l-2 border-amber-900 pl-4">
+                        "Full Stack Developer & Algorithmic Problem Solver"
+                    </p>
+<ul class="text-sm code-text space-y-2 pt-2">
+<li class="flex items-center gap-2 text-charcoal-300"><span class="text-amber-500">√</span> Scalable microservices development</li>
+<li class="flex items-center gap-2 text-charcoal-300"><span class="text-amber-500">√</span> Real-time data streaming & processing</li>
+<li class="flex items-center gap-2 text-charcoal-300"><span class="text-amber-500">√</span> Pixel-perfect UI deployment</li>
+</ul>
+</div>
+<div class="flex flex-wrap gap-4">
+<a class="bg-amber-600 hover:bg-amber-500 text-charcoal-950 px-6 py-2 rounded text-sm code-text font-bold transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)]" href="#contact">DEPLOY_HIRE</a>
+<a class="border border-charcoal-700 hover:border-amber-500 text-charcoal-300 px-6 py-2 rounded text-sm code-text font-bold transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)]" href="https://drive.google.com/file/d/1dzfTBwgdHYGQ6eevA2Tw2P5Cwh4VPxh6/view?usp=sharing" target="_blank" rel="noopener noreferrer">DOWNLOAD_RESUME.pdf</a>
+</div>
+</div>
+<div class="lg:col-span-4 bg-charcoal-950 rounded-lg panel-border overflow-hidden">
+<div class="p-4 border-b border-charcoal-800 bg-charcoal-900 flex items-center justify-between">
+<span class="text-xs code-text text-charcoal-400">BIOMETRIC_VISUAL</span>
+<div class="flex gap-1">
+<div class="w-2 h-2 rounded-full bg-red-500/50"></div>
+<div class="w-2 h-2 rounded-full bg-amber-500/50"></div>
+<div class="w-2 h-2 rounded-full bg-amber-500/50"></div>
+</div>
+</div>
+<div class="p-4">
+<img alt="Vaibhav Kumar Rai" class="w-full  brightness-75 hover:grayscale-0 transition-all duration-700 rounded border border-charcoal-800" src="vaibhav-profile.jpg"/>
+</div>
+</div>
+</section>
+<section class="bg-charcoal-950 rounded-lg panel-border p-6" id="skills">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-xl font-bold text-white uppercase tracking-wider">Skills_Matrix</h3>
+<p class="text-xs code-text text-amber-500 mt-1">Core_Competency_Analysis.exe</p>
+</div>
+<span class="material-symbols-outlined text-amber-500/30 text-4xl">grid_view</span>
+</div>
+<div class="flex items-center justify-between mb-6">
+<span class="text-xs code-text text-charcoal-500">Displaying (06) Modules</span>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="bg-charcoal-900 rounded-lg panel-border group hover:border-amber-500/50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)] p-5"><h4 class="text-white font-bold mb-3">Programming Languages</h4><p class="text-xs text-charcoal-400">C++, Java, Python, JavaScript, TypeScript, HTML, CSS</p></div>
+<div class="bg-charcoal-900 rounded-lg panel-border group hover:border-amber-500/50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)] p-5"><h4 class="text-white font-bold mb-3">Frameworks</h4><p class="text-xs text-charcoal-400">Next.js, React.js, Express.js, Node.js, socket.io, Tailwind CSS, GSAP, SpringBoot, FramerMotion</p></div>
+<div class="bg-charcoal-900 rounded-lg panel-border group hover:border-amber-500/50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)] p-5"><h4 class="text-white font-bold mb-3">Database & Services</h4><p class="text-xs text-charcoal-400">PostgreSQL, MySQL, MongoDB, Prisma/Orm, CI/CD, Docker, Linux, Postman, AWS, JPA</p></div>
+<div class="bg-charcoal-900 rounded-lg panel-border group hover:border-amber-500/50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)] p-5"><h4 class="text-white font-bold mb-3">Developer Tools</h4><p class="text-xs text-charcoal-400">Git, GitHub, VS Code, Figma, Cursor</p></div>
+<div class="bg-charcoal-900 rounded-lg panel-border group hover:border-amber-500/50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)] p-5"><h4 class="text-white font-bold mb-3">Relevant Coursework</h4><p class="text-xs text-charcoal-400">DSA, OOP Concepts, DBMS, Microservices, Operating System, Computer Networks</p></div>
+<div class="bg-charcoal-900 rounded-lg panel-border group hover:border-amber-500/50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)] p-5"><h4 class="text-white font-bold mb-3">Soft Skills</h4><p class="text-xs text-charcoal-400">Analytical Thinking, Agile Development, Active Listening, Problem Solving, Adaptability</p></div>
+</div>
+<div class="text-center pt-4">
+<a class="inline-block px-8 py-3 bg-charcoal-950 border border-charcoal-800 text-charcoal-300 rounded text-xs code-text hover:border-amber-500 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)] uppercase tracking-widest" href="skills.html">[ VIEW_ALL_SKILLS ]</a>
+</div>
+</section>
+<div class="grid lg:grid-cols-2 gap-6">
+<section class="bg-charcoal-950 rounded-lg panel-border flex flex-col" id="experience">
+<div class="p-4 bg-charcoal-900 border-b border-charcoal-800 flex items-center gap-2"><span class="material-symbols-outlined text-sm text-amber-500">list_alt</span><span class="text-xs font-bold code-text uppercase">Operational_History</span></div>
+<div class="p-6 space-y-8 flex-grow">
+<div class="relative pl-6 border-l border-amber-900"><div class="absolute w-2 h-2 bg-amber-500 rounded-full -left-[4.5px] top-1 shadow-[0_0_5px_#FFBF00]"></div><div class="text-[10px] code-text text-amber-500 mb-1">Sep 2025 - Nov 2025</div><h4 class="text-white font-bold text-sm">Web Developer Intern</h4><p class="text-xs text-charcoal-400 mb-2">Vanillakart</p><ul class="text-xs text-charcoal-300 space-y-2 leading-relaxed"><li class="flex items-start gap-2"><span class="text-amber-500 mt-0.5">»</span> Managed and developed client websites utilizing WordPress.</li><li class="flex items-start gap-2"><span class="text-amber-500 mt-0.5">»</span> Enhanced user experience (UX) and interface design.</li><li class="flex items-start gap-2"><span class="text-amber-500 mt-0.5">»</span> Tech: WordPress, React.js, Node.js, MongoDB, Rest API.</li></ul></div>
+<div class="relative pl-6 border-l border-charcoal-800">
+<div class="absolute w-2 h-2 bg-charcoal-700 rounded-full -left-[4.5px] top-1"></div>
+<div class="text-[10px] code-text text-charcoal-500 mb-1">2025 INTERN</div>
+<h4 class="text-white font-bold text-sm">Full Stack Developer Intern</h4>
+<p class="text-xs text-charcoal-400 mb-2">DSPL Technologies</p>
+<ul class="text-xs text-charcoal-300 space-y-2 leading-relaxed">
+<li class="flex items-start gap-2"><span class="text-amber-500 mt-0.5">»</span> Directed the end-to-end modernization of the company website from a legacy implementation to a structured MERN-based platform, improving maintainability, component reuse, and long-term feature scalability.</li>
+<li class="flex items-start gap-2"><span class="text-amber-500 mt-0.5">»</span> Diagnosed and fixed high-impact issues across frontend and backend layers, enhancing runtime stability, reducing UI inconsistencies, and improving performance across common user flows.</li>
+<li class="flex items-start gap-2"><span class="text-amber-500 mt-0.5">»</span> Collaborated on deployment hardening and QA validation to deliver a polished production release with consistent cross-browser behavior and fully responsive layouts for desktop, tablet, and mobile.</li>
+<li class="flex items-start gap-2"><span class="text-amber-500 mt-0.5">»</span> Contributed to cleaner development workflows with improved code organization, modular structure, and maintainable UI patterns aligned with professional delivery standards.</li>
+</ul>
+</div>x
+<div class="pt-2"><a class="inline-flex items-center justify-center px-6 py-3 rounded border border-amber-500/50 bg-amber-900/10 text-amber-500 text-xs code-text tracking-[0.18em] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_#FFBF00] hover:bg-amber-900/20" href="experience.html">[ VIEW_FULL_TIMELINE ]</a></div>
+</div>
+
+</section>
+<div class="space-y-6">
+<section class="bg-charcoal-950 rounded-lg panel-border overflow-hidden"><div class="p-4 bg-charcoal-900 border-b border-charcoal-800 flex items-center gap-2"><span class="material-symbols-outlined text-sm text-amber-500">school</span><span class="text-xs font-bold code-text uppercase">Academic_Certificates</span></div><div class="p-6 space-y-4"><div class="p-4 bg-charcoal-900 rounded border-l-2 border-amber-500"><div class="text-[10px] code-text text-charcoal-500 uppercase">B.Tech CSE</div><div class="text-sm font-bold text-white">Lovely Professional University</div><div class="text-[10px] code-text text-amber-500 mt-1">AUG 2023 - PRESENT // CGPA: 7.0</div></div><div class="p-4 bg-charcoal-900 rounded border-l-2 border-charcoal-800"><div class="text-[10px] code-text text-charcoal-500 uppercase">Intermediate</div><div class="text-sm font-bold text-white">Glorious Academy</div><div class="text-[10px] code-text text-charcoal-500 mt-1">APR 2021 - MAR 2022 // 74%</div></div><div class="p-4 bg-charcoal-900 rounded border-l-2 border-charcoal-800"><div class="text-[10px] code-text text-charcoal-500 uppercase">Matriculation</div><div class="text-sm font-bold text-white">Happy Model School</div><div class="text-[10px] code-text text-charcoal-500 mt-1">APR 2019 - MAR 2020 // 86.2%</div></div></div></section>
+<section class="bg-charcoal-950 rounded-lg panel-border overflow-hidden"><div class="p-4 bg-charcoal-900 border-b border-charcoal-800 flex items-center gap-2"><span class="material-symbols-outlined text-sm text-amber-500">workspace_premium</span><span class="text-xs font-bold code-text uppercase">System_Achievements</span></div><div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-4"><div class="p-4 border border-amber-900/30 bg-amber-900/10 rounded hover:border-amber-500/50 transition-all group hover:-translate-y-1 hover:shadow-[0_0_16px_rgba(255,191,0,0.3)]"><div class="text-amber-500 font-bold text-xl code-text mb-2 uppercase">LEETCODE</div><div class="text-xs text-charcoal-400 leading-relaxed">Maintained a 300+ day streak, solving 780+ problems with a 1877 contest rating (Top 5% globally).</div></div><div class="p-4 border border-amber-900/30 bg-amber-900/10 rounded hover:border-amber-500/50 transition-all group hover:-translate-y-1 hover:shadow-[0_0_16px_rgba(255,191,0,0.3)]"><div class="text-amber-500 font-bold text-xl code-text mb-2 uppercase">COMPETITIVE</div><div class="text-xs text-charcoal-400 leading-relaxed">Solved 250+ problems on GeeksforGeeks and achieved 2 rating on CodeChef.</div></div><div class="p-4 border border-amber-900/30 bg-amber-900/10 rounded hover:border-amber-500/50 transition-all group hover:-translate-y-1 hover:shadow-[0_0_16px_rgba(255,191,0,0.3)]"><div class="text-amber-500 font-bold text-xl code-text mb-2 uppercase">HACKATHON</div><div class="text-xs text-charcoal-400 leading-relaxed">Led technical operations and execution for the Bits & Bites 2.0 hackathon.</div></div></div></section>
+</div>
+</div>
+<section class="space-y-6" id="projects">
+<div class="flex items-center justify-between"><h3 class="text-xl font-bold text-white uppercase tracking-wider">Project_Repositories</h3><span class="text-xs code-text text-charcoal-500">Displaying (03) Active Nodes</span></div>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="bg-charcoal-950 rounded-lg panel-border group hover:border-amber-500/50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)]"><div class="h-40 bg-charcoal-800 relative overflow-hidden"><img alt="InternNova" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-all" src="image4.png"/><div class="absolute inset-0 bg-gradient-to-t from-charcoal-950 to-transparent"></div></div><div class="p-5"><div class="flex flex-wrap gap-2 mb-3"><span class="text-[9px] code-text bg-amber-950 text-amber-500 px-2 py-0.5 rounded border border-amber-500/20">NEXT.JS 16</span><span class="text-[9px] code-text bg-amber-950 text-amber-500 px-2 py-0.5 rounded border border-amber-500/20">EXPRESS 5</span></div><h4 class="text-white font-bold mb-2">InternNova | Job Aggregator Platform</h4><p class="text-xs text-charcoal-400 mb-6">Feb 2026 - Mar 2026. Built a full-stack job aggregator using Next.js 16 and Express 5 that scrapes listings from Internshala. Automated data pipeline with node-cron. Tech: Next.js 16, React 19, Tailwind 4, MongoDB, Axios, Cheerio.</p><div class="flex gap-4"><a class="text-charcoal-400 hover:text-amber-500 transition-colors" href="https://intern-nova-seven.vercel.app/" target="_blank" rel="noopener noreferrer" title="GitHub Repo"><span class="material-symbols-outlined text-lg">code</span></a></div></div></div>
+<div class="bg-charcoal-950 rounded-lg panel-border group hover:border-amber-500/50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)]"><div class="h-40 bg-charcoal-800 relative overflow-hidden"><img alt="PingAlert" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-all" src="image5.png"/><div class="absolute inset-0 bg-gradient-to-t from-charcoal-950 to-transparent"></div></div><div class="p-5"><div class="flex flex-wrap gap-2 mb-3"><span class="text-[9px] code-text bg-amber-950 text-amber-500 px-2 py-0.5 rounded border border-amber-500/20">TYPESCRIPT</span><span class="text-[9px] code-text bg-amber-950 text-amber-500 px-2 py-0.5 rounded border border-amber-500/20">PRISMA</span></div><h4 class="text-white font-bold mb-2">PingAlert | Full-Stack Event Monitoring Tool</h4><p class="text-xs text-charcoal-400 mb-6">Jan 2026 - Feb 2026. Created a real-time event monitoring system integrating Discord Webhooks for automated alerting. Tech: Next.js, Tailwind CSS, TypeScript, Prisma PostgreSQL, Vercel, Stripe.</p><div class="flex gap-4"><a class="text-charcoal-400 hover:text-amber-500 transition-colors" href="https://ping-alert-chi.vercel.app/" target="_blank" rel="noopener noreferrer" title="GitHub Repo"><span class="material-symbols-outlined text-lg">code</span></a></div></div></div>
+<div class="bg-charcoal-950 rounded-lg panel-border group hover:border-amber-500/50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)]"><div class="h-40 bg-charcoal-800 relative overflow-hidden"><img alt="Vibe Health AI" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-all" src="AuraAI.png"/><div class="absolute inset-0 bg-gradient-to-t from-charcoal-950 to-transparent"></div></div><div class="p-5"><div class="flex flex-wrap gap-2 mb-3"><span class="text-[9px] code-text bg-amber-950 text-amber-500 px-2 py-0.5 rounded border border-amber-500/20">LLAMA-3.1</span><span class="text-[9px] code-text bg-amber-950 text-amber-500 px-2 py-0.5 rounded border border-amber-500/20">WEB SPEECH API</span></div><h4 class="text-white font-bold mb-2">Vibe Health AI | AI Healthcare Triage</h4><p class="text-xs text-charcoal-400 mb-6">Oct 2025. Created a multilingual AI triage platform using SambaNova Cloud API (Llama-3.1). Implemented bi-directional voice interaction via Web Speech API. Tech: JavaScript, Tailwind CSS, HTML5.</p><div class="flex gap-4"><a class="text-charcoal-400 hover:text-amber-500 transition-colors" href="https://vaibhavkumarrai000.github.io/Vibe-Health-AI/" target="_blank" rel="noopener noreferrer" title="GitHub Repo"><span class="material-symbols-outlined text-lg">code</span></a></div></div></div>
+</div>
+<div class="text-center pt-4"><a class="inline-block px-8 py-3 bg-charcoal-950 border border-charcoal-800 text-charcoal-300 rounded text-xs code-text hover:border-amber-500 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)] uppercase tracking-widest" href="projects.html">[ VIEW_ALL_PROJECTS ]</a></div>
+</section>
+<section class="space-y-6" id="certifications">
+<div class="flex items-center justify-between"><h3 class="text-xl font-bold text-white uppercase tracking-wider">Verified_Certifications</h3><span class="text-xs code-text text-charcoal-500">Displaying (04) Modules</span></div>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-charcoal-950 rounded-lg panel-border group hover:border-amber-500/50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)]"><div class="h-36 bg-charcoal-800 relative overflow-hidden"><img alt="Full Stack Web Development" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-all" src="image2.png"/><div class="absolute inset-0 bg-gradient-to-t from-charcoal-950 to-transparent"></div></div><div class="p-5"><div class="flex flex-wrap gap-2 mb-3"><span class="text-[9px] code-text bg-amber-950 text-amber-500 px-2 py-0.5 rounded border border-amber-500/20">UDEMY</span><span class="text-[9px] code-text bg-amber-950 text-amber-500 px-2 py-0.5 rounded border border-amber-500/20">FEB 2026</span></div><h4 class="text-white font-bold mb-1">Full Stack Web Development</h4><p class="text-xs text-charcoal-400 mb-4">Udemy</p><a class="inline-flex items-center gap-2 px-4 py-2 rounded border border-amber-500/40 bg-amber-900/10 text-amber-500 text-[10px] code-text uppercase tracking-wider transition-all duration-300 ease-out hover:bg-amber-500 hover:text-charcoal-950 hover:shadow-[0_0_12px_#FFBF00]" href="https://www.udemy.com/certificate/UC-4056ca90-37cc-469d-9733-9346c4d1fadd/">View Certificate <span class="material-symbols-outlined text-sm">open_in_new</span></a></div></div>
+<div class="bg-charcoal-950 rounded-lg panel-border group hover:border-amber-500/50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)]"><div class="h-36 bg-charcoal-800 relative overflow-hidden"><img alt="Training in DSA - CPE" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-all" src="image1.png"/><div class="absolute inset-0 bg-gradient-to-t from-charcoal-950 to-transparent"></div></div><div class="p-5"><div class="flex flex-wrap gap-2 mb-3"><span class="text-[9px] code-text bg-amber-950 text-amber-500 px-2 py-0.5 rounded border border-amber-500/20">LPU</span><span class="text-[9px] code-text bg-amber-950 text-amber-500 px-2 py-0.5 rounded border border-amber-500/20">SEP 2025</span></div><h4 class="text-white font-bold mb-1">Training in DSA - CPE</h4><p class="text-xs text-charcoal-400 mb-4">Lovely Professional University</p><a class="inline-flex items-center gap-2 px-4 py-2 rounded border border-amber-500/40 bg-amber-900/10 text-amber-500 text-[10px] code-text uppercase tracking-wider transition-all duration-300 ease-out hover:bg-amber-500 hover:text-charcoal-950 hover:shadow-[0_0_12px_#FFBF00]" href="https://lpucolab438.examly.io/certificate/U2FsdGVkX19aY6M8mXKWPJvT5T8dQwCE1BMe1mPt9t0%3D">View Certificate <span class="material-symbols-outlined text-sm">open_in_new</span></a></div></div>
+<div class="bg-charcoal-950 rounded-lg panel-border group hover:border-amber-500/50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)]"><div class="h-36 bg-charcoal-800 relative overflow-hidden"><img alt="Java Programming" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-all" src="image3.png"/><div class="absolute inset-0 bg-gradient-to-t from-charcoal-950 to-transparent"></div></div><div class="p-5"><div class="flex flex-wrap gap-2 mb-3"><span class="text-[9px] code-text bg-amber-950 text-amber-500 px-2 py-0.5 rounded border border-amber-500/20">IAMNEO</span><span class="text-[9px] code-text bg-amber-950 text-amber-500 px-2 py-0.5 rounded border border-amber-500/20">MAY 2025</span></div><h4 class="text-white font-bold mb-1">Java Programming</h4><p class="text-xs text-charcoal-400 mb-4">iamNeo</p><a class="inline-flex items-center gap-2 px-4 py-2 rounded border border-amber-500/40 bg-amber-900/10 text-amber-500 text-[10px] code-text uppercase tracking-wider transition-all duration-300 ease-out hover:bg-amber-500 hover:text-charcoal-950 hover:shadow-[0_0_12px_#FFBF00]" href="https://lpucolab438.examly.io/certificate/U2FsdGVkX19LE4YsrD%2BOx4E7IKsIyhvQsAm%2FYRE08ng%3D">View Certificate <span class="material-symbols-outlined text-sm">open_in_new</span></a></div></div>
+<div class="bg-charcoal-950 rounded-lg panel-border group hover:border-amber-500/50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)]"><div class="h-36 bg-charcoal-800 relative overflow-hidden"><img alt="Data Structures and Algorithms" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-all" src="image1.png"/><div class="absolute inset-0 bg-gradient-to-t from-charcoal-950 to-transparent"></div></div><div class="p-5"><div class="flex flex-wrap gap-2 mb-3"><span class="text-[9px] code-text bg-amber-950 text-amber-500 px-2 py-0.5 rounded border border-amber-500/20">IAMNEO</span><span class="text-[9px] code-text bg-amber-950 text-amber-500 px-2 py-0.5 rounded border border-amber-500/20">DEC 2024</span></div><h4 class="text-white font-bold mb-1">Data Structures and Algorithms</h4><p class="text-xs text-charcoal-400 mb-4">iamNeo</p><a class="inline-flex items-center gap-2 px-4 py-2 rounded border border-amber-500/40 bg-amber-900/10 text-amber-500 text-[10px] code-text uppercase tracking-wider transition-all duration-300 ease-out hover:bg-amber-500 hover:text-charcoal-950 hover:shadow-[0_0_12px_#FFBF00]" href="https://lpucolab438.examly.io/certificate/U2FsdGVkX19aY6M8mXKWPJvT5T8dQwCE1BMe1mPt9t0%3D">View Certificate <span class="material-symbols-outlined text-sm">open_in_new</span></a></div></div>
+</div>
+<div class="text-center pt-4"><a class="inline-block px-8 py-3 bg-charcoal-950 border border-charcoal-800 text-charcoal-300 rounded text-xs code-text hover:border-amber-500 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)] uppercase tracking-widest" href="certifications.html">[ VIEW_ALL_CERTIFICATIONS ]</a></div>
+</section>
+<section class="grid lg:grid-cols-2 gap-6 pb-12" id="contact">
+<div class="bg-charcoal-950 rounded-lg panel-border p-8 flex flex-col justify-center">
+<div class="text-amber-500 text-xs code-text mb-2">> CONNECTION_ESTABLISHED</div>
+<h3 class="text-2xl font-bold text-white uppercase mb-6">Transmit_Inquiry</h3>
+<p class="text-charcoal-400 text-sm mb-8 leading-relaxed">
+                    Always operational for high-priority projects and technical collaborations. Ready to deploy expertise to your development pipeline.
+                </p>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-charcoal-900 border border-charcoal-800 flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-amber-500 text-lg">mail</span>
+</div>
+<div>
+<p class="text-[10px] code-text text-charcoal-500">EMAIL_ID</p>
+<p class="text-sm font-bold text-white">vr153848@gmail.com</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-charcoal-900 border border-charcoal-800 flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-amber-500 text-lg">call</span>
+</div>
+<div>
+<p class="text-[10px] code-text text-charcoal-500">SECURE_VOICE</p>
+<p class="text-sm font-bold text-white">+91-7839153848</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-charcoal-950 rounded-lg panel-border overflow-hidden">
+<div class="terminal-header">
+<div class="terminal-dot bg-red-500/50"></div>
+<div class="terminal-dot bg-amber-500/50"></div>
+<div class="terminal-dot bg-amber-500/50"></div>
+<span class="ml-auto text-[10px] code-text text-charcoal-500">v1.0.4-stable</span>
+</div>
+<form action="https://formspree.io/f/mwvryngk" method="POST" class="p-8 space-y-6">
+<div class="grid md:grid-cols-2 gap-6">
+<div>
+<label class="block text-[10px] code-text text-charcoal-500 uppercase mb-2">Subject_Name</label>
+<input name="name" required class="w-full bg-charcoal-900 border border-charcoal-800 rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500 transition-colors" placeholder="Identification..." type="text"/>
+</div>
+<div>
+<label class="block text-[10px] code-text text-charcoal-500 uppercase mb-2">Return_Address</label>
+<input name="email" required class="w-full bg-charcoal-900 border border-charcoal-800 rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500 transition-colors" placeholder="Email..." type="email"/>
+</div>
+</div>
+<div>
+<label class="block text-[10px] code-text text-charcoal-500 uppercase mb-2">Payload_Data</label>
+<textarea name="message" required class="w-full bg-charcoal-900 border border-charcoal-800 rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500 transition-colors h-32" placeholder="Message content..."></textarea>
+</div>
+<button class="w-full bg-amber-600 hover:bg-amber-500 text-charcoal-950 font-bold py-4 rounded text-xs code-text transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,191,0,0.5)] tracking-[0.2em]" type="submit">
+                        [ SEND_PACKET ]
+                    </button>
+</form>
+</div>
+</section>
+<footer class="text-center py-6 border-t border-charcoal-800">
+<p class="text-[10px] code-text text-charcoal-600 uppercase tracking-widest">
+                &copy; 2026 VK_SYSTEMS_GLOBAL // BUILT_WITH_PRECISION // ALL_RIGHTS_RESERVED
+            </p>
+</footer>
+</main>
+</div>
+<script>
+    (() => {
+        const navLinks = Array.from(document.querySelectorAll('aside nav a[href^="#"]'));
+        const sections = navLinks
+            .map((link) => document.querySelector(link.getAttribute('href')))
+            .filter(Boolean);
+
+        if (!navLinks.length || !sections.length) {
+            return;
+        }
+
+        const setActiveLink = (id) => {
+            navLinks.forEach((link) => {
+                const isActive = link.getAttribute('href') === `#${id}`;
+                link.classList.toggle('active', isActive);
+            });
+        };
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const visibleEntries = entries
+                    .filter((entry) => entry.isIntersecting)
+                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+                if (visibleEntries.length) {
+                    setActiveLink(visibleEntries[0].target.id);
+                }
+            },
+            {
+                root: null,
+                rootMargin: '-25% 0px -45% 0px',
+                threshold: [0.15, 0.35, 0.55, 0.75],
+            }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+
+        const initialSection = sections.find((section) => section.getBoundingClientRect().top >= 0) || sections[0];
+        setActiveLink(initialSection.id);
+    })();
+</script>
+</body></html>
+
+
+
+
+
+
